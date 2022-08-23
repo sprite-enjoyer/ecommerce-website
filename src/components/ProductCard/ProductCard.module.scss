@@ -1,0 +1,87 @@
+@import "../../global/palette.scss";
+
+@mixin button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+  color: #000;
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
+  outline: none;
+  overflow: none;
+
+  &:hover {
+    transform: translateY(0.3vh);
+  }
+
+  &:active {
+    transform: translateY(-0.5vh);
+  }
+}
+
+.main {
+  z-index: 4;
+  margin: 2vw;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 160%;
+  padding-top: 3vh;
+  padding-bottom: 1vw;
+  width: 22vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__imageContainer {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &__image {
+      width: 20vw;
+    }
+
+    &__outOfStock {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      align-self: center;
+      width: 20vw;
+
+      &__txt {
+        font-size: 1.5em;
+        font-weight: 500;
+        line-height: 160%;
+        color: rgb(49, 49, 49);
+      }
+    }
+
+    &__btn {
+      @include button;
+      border-radius: 50px;
+      background-color: $mainGreen;
+      box-shadow: 0px 4px 10px $mainGreen;
+      position: absolute;
+      width: 2vw;
+      height: 2vw;
+      padding: 22px;
+      bottom: -1vw;
+      right: 3.5vw;
+    }
+
+  }
+
+  &__nameContainer {
+    margin-left: 2.8vw;
+    margin-top: 3vh;
+  }
+
+  &__priceContainer {
+    margin-left: 2.8vw;
+  }
+}

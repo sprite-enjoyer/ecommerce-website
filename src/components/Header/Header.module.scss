@@ -1,0 +1,79 @@
+@import "../../global/palette.scss";
+
+.main {
+  z-index: 5;
+  position: sticky;
+  width: 100vw;
+  height: 4vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+
+  &__categoryContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4vw;
+    margin-left: 5vw;
+    gap: 1vw;
+
+    &__btn {
+      outline: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      height: 4vw;
+      width: 6vw;
+
+      &__txt {
+        font-size: 1.2em;
+        color: $btnText-black ;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+        line-height: 160%;
+      }
+    }
+  }
+
+  &__logoContainer {
+    position: absolute;
+    top: 2vw;
+    left: 50%;
+    align-self: center;
+  }
+
+
+  &__dropDowns {
+    position: absolute;
+    top: 30%;
+    right: 8vw;
+    display: flex;
+    gap: 1vw;
+
+    &__cartBtn {
+      height: 3vw;
+      border: none;
+      padding-bottom: 16px;
+
+      &__itemNumber {
+        position: relative;
+        width: 1vw;
+        height: 1vw;
+        top: 9px;
+        left: 14px;
+        border-radius: 50px;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__number {
+          font-weight: 600;
+          color: white;
+        }
+      }
+    }
+  }
+}
