@@ -9,7 +9,7 @@ class CurrencySwitcher extends Component {
   headerStore = HeaderStore;
   state = {
     currencies: this.headerStore.currencies
-  }
+  };
 
   componentDidMount() {
     this.headerStore.fetchCurrencies();
@@ -22,7 +22,7 @@ class CurrencySwitcher extends Component {
           <button
             onClick={() => this.headerStore.setCurrencyCollapsed(!this.headerStore.currencySwitcherShown)}
             className={styles["main__currencyBtn"]} >
-            {this.headerStore.currency}
+            {this.headerStore.currency.symbol}
             <img src={require("../../assets/arrowDown.svg").default} alt="arrowDown" />
           </button>
         </div>
@@ -30,6 +30,7 @@ class CurrencySwitcher extends Component {
           <div className={styles["conditional"]} >
             {this.headerStore.currencies.map(currency =>
               <button
+                onClick={() => this.headerStore.setCurrency({ label: currency.label, symbol: currency.symbol })}
                 className={styles["conditional__btn"]}
                 key={v4()} >
                 <span

@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { action, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 import { apolloClient } from "..";
 import { CartProduct } from "../global/types";
 
@@ -9,17 +9,25 @@ class CartStoreImpl {
   constructor() {
     makeObservable(this, {
       products: observable,
+      ProductCount: computed,
+      setProducts: action,
       addProduct: action,
       removeProduct: action
     })
   }
 
+  setProducts(products: Array<CartProduct>) {
+    this.products = products;
+  }
+
   addProduct(id: string) {
+    const quote = "\"";
     apolloClient.query({
       query: gql`
       {
-        product(id: ${id}){
+        product(id: ${quote + id + quote}){
           name
+          brand
           prices{
             amount
             currency{
@@ -29,19 +37,45 @@ class CartStoreImpl {
           }
           gallery
           attributes{
+            id
             type
             name
+            items{
+              displayValue
+              value
+              id
+            }
           }
         }
       }
       `
     })
-      .then(response => console.log(response.data))
+      .then(response => {
+        const product = response.data.product;
+        const temp = [...this.products];
+
+        const newProduct: CartProduct = {
+          name: product.name,
+          id: id,
+          prices: product.prices,
+          gallery: product.gallery,
+          attributes: product.attributes,
+          brand: product.brand
+        };
+        temp.push(newProduct);
+        this.setProducts(temp);
+      })
       .catch(error => console.log(error));
   }
+
   removeProduct(id: string) {
-    this.products.filter(product => product.id !== id);
+    this.products = this.products.filter(product => product.id !== id);
   }
+
+  get ProductCount() {
+    return this.products.length;
+  }
+
 }
 
 const CartStore = new CartStoreImpl();

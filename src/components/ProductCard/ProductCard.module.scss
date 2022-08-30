@@ -13,11 +13,11 @@
   overflow: none;
 
   &:hover {
-    transform: translateY(0.3vh);
+    transform: translateY(0.2vh);
   }
 
   &:active {
-    transform: translateY(-0.5vh);
+    transform: translateY(-0.3vh);
   }
 }
 
@@ -30,11 +30,15 @@
   font-size: 18px;
   line-height: 160%;
   padding-top: 3vh;
-  padding-bottom: 1vw;
+  padding-bottom: 1.4vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
   width: 22vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+
 
   &__imageContainer {
     cursor: pointer;

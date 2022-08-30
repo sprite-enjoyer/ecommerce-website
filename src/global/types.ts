@@ -32,4 +32,12 @@ export type CartProduct = {
   prices: Array<Price>;
   gallery: Array<string>;
   attributes: Array<AttributeSet>;
+  brand: string;
+};
+
+export type DisplayProduct = {
+  name: string;
+  id: string;
+  prices: Array<string>;
+  picture: string;
 };

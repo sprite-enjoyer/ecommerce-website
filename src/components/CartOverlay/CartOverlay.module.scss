@@ -1,10 +1,51 @@
 .main {
+
+  &__cartBtn {
+    height: 3vw;
+    border: none;
+    padding-bottom: 16px;
+    cursor: pointer;
+    background-color: transparent;
+
+    &__itemNumber {
+      position: relative;
+      width: 1vw;
+      height: 1vw;
+      top: 9px;
+      left: 14px;
+      border-radius: 50px;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__number {
+        font-weight: 600;
+        color: white;
+      }
+    }
+  }
+}
+
+.conditional {
   z-index: 6;
-  border: 2px solid red;
   position: absolute;
-  right: 7vw;
-  top: 5vw;
-  width: 17vw;
+  right: -1vw;
+  top: 3.62vw;
+  width: 20vw;
   height: 35vw;
+  padding: 3vh 1vw 1vh 1vw;
   overflow-y: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  &__countText {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 160%;
+
+  }
 }

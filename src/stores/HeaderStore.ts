@@ -4,11 +4,15 @@ import { apolloClient } from "..";
 import { Category, Currency } from "../global/types";
 
 class HeaderStoreImpl {
-  category: Category = Category.all;
-  currency: string = "$";
+  category: string = Category.all;
+  currency: Currency = {
+    label: "USD",
+    symbol: "$"
+  };
   cartShown: boolean = false;
   currencySwitcherShown: boolean = false;
   currencies: Array<Currency> = [];
+  filteredProducts: Array<any> = [];
 
   constructor() {
     makeObservable(this, {
@@ -17,21 +21,23 @@ class HeaderStoreImpl {
       cartShown: observable,
       currencySwitcherShown: observable,
       currencies: observable,
+      filteredProducts: observable,
       setCategory: action,
+      setCurrencies: action,
       setCurrencyCollapsed: action,
-      setSelectedCurrency: action,
-      seCartCollapsed: action,
-      fetchCurrencies: action
+      setCartShown: action,
+      setProducts: action,
+      setCurrency: action,
+      fetchCurrencies: action,
+      fetchProducts: action
     });
   }
 
   setCategory(category: Category) {
     this.category = category;
+    this.fetchProducts();
   }
-  setSelectedCurrency(currency: string) {
-    this.currency = currency;
-  }
-  seCartCollapsed(shown: boolean) {
+  setCartShown(shown: boolean) {
     this.cartShown = shown;
   }
   setCurrencyCollapsed(shown: boolean) {
@@ -39,6 +45,13 @@ class HeaderStoreImpl {
   }
   setCurrencies(currencies: Array<Currency>) {
     this.currencies = currencies;
+  }
+  setProducts(filteredProducts: Array<any>) {
+    this.filteredProducts = filteredProducts;
+  }
+  setCurrency(currency: Currency) {
+    this.currency = currency;
+    this.fetchProducts();
   }
 
   fetchCurrencies() {
@@ -56,6 +69,35 @@ class HeaderStoreImpl {
       .catch(error => console.error(error));
   }
 
+  fetchProducts() {
+    const quote = "\"";
+    const category = this.category.toString();
+    apolloClient.query({
+      query: gql`
+        {category(input: {title: ${quote + category + quote}}){
+            products{
+              name
+              id
+              brand
+              inStock
+              gallery
+              prices{
+                amount
+                currency{
+                  symbol
+                  label
+                }
+              }
+            }
+          }
+        }
+        `
+    })
+      .then(response => this.setProducts(response.data.category.products))
+      .catch(error => console.log(error));
+  }
+
 };
+
 const HeaderStore = new HeaderStoreImpl();
 export default HeaderStore; 

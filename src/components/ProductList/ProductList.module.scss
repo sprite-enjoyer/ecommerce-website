@@ -1,0 +1,23 @@
+.main {
+
+
+
+  &__category {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 160%;
+    position: absolute;
+    left: 12vw;
+    top: 12vh;
+
+  }
+
+  &__productList {
+    margin-top: 18vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

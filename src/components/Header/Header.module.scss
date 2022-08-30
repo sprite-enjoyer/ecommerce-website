@@ -1,7 +1,7 @@
 @import "../../global/palette.scss";
 
 .main {
-  z-index: 5;
+  z-index: 7;
   position: sticky;
   width: 100vw;
   height: 4vw;
@@ -39,7 +39,7 @@
 
   &__logoContainer {
     position: absolute;
-    top: 2vw;
+    top: 1vw;
     left: 50%;
     align-self: center;
   }
@@ -47,7 +47,7 @@
 
   &__dropDowns {
     position: absolute;
-    top: 30%;
+    top: 10%;
     right: 8vw;
     display: flex;
     gap: 1vw;
@@ -56,6 +56,8 @@
       height: 3vw;
       border: none;
       padding-bottom: 16px;
+      cursor: pointer;
+      background-color: transparent;
 
       &__itemNumber {
         position: relative;

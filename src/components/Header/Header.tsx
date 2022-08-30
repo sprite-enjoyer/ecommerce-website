@@ -16,7 +16,7 @@ class Header extends Component {
             <button
               onClick={() => this.headerStore.setCategory(Category.all)}
               style={this.headerStore.category === Category.all ?
-                { borderBottom: "3px solid #5ECE7B" } : {}}
+                { borderBottom: "3px solid #5ECE7B" } : { paddingBottom: "5px" }}
               className={styles["main__categoryContainer__btn"]} >
               <span className={styles["main__categoryContainer__btn__txt"]}>
                 ALL
@@ -26,7 +26,7 @@ class Header extends Component {
           <div>
             <button
               style={this.headerStore.category === Category.clothes ?
-                { borderBottom: "3px solid #5ECE7B" } : {}}
+                { borderBottom: "3px solid #5ECE7B" } : { paddingBottom: "5px" }}
               onClick={() => this.headerStore.setCategory(Category.clothes)}
               className={styles["main__categoryContainer__btn"]} >
               <span className={styles["main__categoryContainer__btn__txt"]}>
@@ -38,7 +38,7 @@ class Header extends Component {
             <button
               onClick={() => this.headerStore.setCategory(Category.tech)}
               style={this.headerStore.category === Category.tech ?
-                { borderBottom: "3px solid #5ECE7B" } : {}}
+                { borderBottom: "3px solid #5ECE7B" } : { paddingBottom: "5px" }}
               className={styles["main__categoryContainer__btn"]} >
               <span className={styles["main__categoryContainer__btn__txt"]}>
                 TECH
@@ -51,18 +51,9 @@ class Header extends Component {
         </div>
         <div className={styles["main__dropDowns"]} >
           <CurrencySwitcher />
-          <button className={styles["main__dropDowns__cartBtn"]} >
-            <div className={styles["main__dropDowns__cartBtn__itemNumber"]} >
-              <span className={styles["main__dropDowns__cartBtn__itemNumber__number"]} >
-                3
-              </span>
-            </div>
-            <img src={require("../../assets/blackCart.svg").default} alt="Cart" />
-          </button>
+          <CartOverlay />
         </div>
-        {
-          this.headerStore.cartShown && <CartOverlay />
-        }
+
       </div>
     );
   }
