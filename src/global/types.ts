@@ -17,6 +17,7 @@ export type Attribute = {
 
 export type AttributeSet = {
   id: string;
+  cartStoreID: number;
   items: Array<Attribute>;
   type: AttributeType;
 };

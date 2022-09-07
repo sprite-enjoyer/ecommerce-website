@@ -33,17 +33,11 @@ class ProductPageSoreImpl{
         setTimeout(() => {this.redirectToHome = false}, 100);
     }
 
-    setActiveAttribute(attrSetId: string, attr: Attribute){
-        if (this.currentProduct === undefined) return;
-
-    this.currentProduct
-    .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
-    .items.forEach(item => item.active = false);
-
-    this.currentProduct
-    .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
-    .items.filter((item: Attribute) => item === attr)[0]
-    .active = true;
+    setActiveAttribute(attrSetId: number, attr: Attribute){
+      if (this.currentProduct === undefined) return;
+      this.currentProduct
+        .attributes.filter((attributeSet: AttributeSet) => attributeSet.cartStoreID === attrSetId)[0]
+        .items.forEach(item => item.active = item === attr ? true : false);
     }
 
     fetchProduct(id: string){
@@ -81,6 +75,10 @@ class ProductPageSoreImpl{
           .then(response => {
             const product = response.data.product;
             for(let attributeSet of product.attributes){
+              attributeSet = {
+                ...attributeSet,
+                cartStoreID: -1
+              }
               for(let item of attributeSet.items){
                item= {
                 ...item,

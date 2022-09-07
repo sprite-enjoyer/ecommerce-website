@@ -9,7 +9,7 @@ export type SwatchButtonProps = {
     attribute: Attribute;
     forCartStore: boolean;
     productID: string;
-    attrSetID: string;
+    attrSetID: number;
     height?: string;
     width?: string;
     minHeight?: string;

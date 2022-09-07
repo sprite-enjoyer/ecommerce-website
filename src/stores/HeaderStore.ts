@@ -37,18 +37,23 @@ class HeaderStoreImpl {
     this.category = category;
     this.fetchProducts();
   }
+  
   setCartShown(shown: boolean) {
     this.cartShown = shown;
   }
+
   setCurrencyCollapsed(shown: boolean) {
     this.currencySwitcherShown = shown;
   }
+
   setCurrencies(currencies: Array<Currency>) {
     this.currencies = currencies;
   }
+
   setProducts(filteredProducts: Array<any>) {
     this.filteredProducts = filteredProducts;
   }
+
   setCurrency(currency: Currency) {
     this.currency = currency;
     this.fetchProducts();

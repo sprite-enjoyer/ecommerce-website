@@ -28,7 +28,7 @@ class ProductPageAttrList extends React.Component{
                                 (attr: Attribute) =>
                                 <TextButton 
                                     forCartStore={false}
-                                    attrSetID ={attrSet.id}
+                                    attrSetID ={attrSet.cartStoreID}
                                     productID = {(-1).toString()}
                                     key={v4()}
                                     attribute={attr}
@@ -40,7 +40,7 @@ class ProductPageAttrList extends React.Component{
                                 (attr: Attribute) =>
                                     <SwatchButton 
                                         forCartStore={false}
-                                        attrSetID ={attrSet.id}
+                                        attrSetID ={attrSet.cartStoreID}
                                         productID = {(-1).toString()}
                                         key={v4()}
                                         attribute={attr}

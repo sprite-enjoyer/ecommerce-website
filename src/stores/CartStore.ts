@@ -8,11 +8,11 @@ class CartStoreImpl {
 
   products: Array<cartStoreProduct> = [];
   count: number = 0;
-
+  attrID: number = 0;
+  
   constructor() {
     makeObservable(this, {
       products: observable,
-      count: observable,
       ProductCount: computed,
       totalPrice: computed,
       totalPriceWithTax: computed,
@@ -86,6 +86,12 @@ class CartStoreImpl {
         const temp = [...this.products];
         
         for(let attributeSet of product.attributes){
+          if (chosenAttrs === undefined){
+            attributeSet = {
+              ...attributeSet,
+              cartStoreID: this.attrID
+            }
+          }
           for(let item of attributeSet.items){
            item= {
             ...item,
@@ -93,6 +99,7 @@ class CartStoreImpl {
            };
           }
         }        
+
         const newProduct: cartStoreProduct = {
           name: product.name,
           id: id,
@@ -114,15 +121,13 @@ class CartStoreImpl {
     this.setProducts(this.products.filter(product => product.cartStoreID !== cartStoreID));
   }
 
-  setActiveAttributeWithId(productId: string, attrSetId: string, attr: Attribute){
+  setActiveAttributeWithId(productId: string, attrSetId: number, attr: Attribute){
     this.products.filter(product => product.id === productId)[0]
-    .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
-    .items.forEach(item => item.active = false);
-
-    this.products.filter(product => product.id === productId)[0]
-    .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
-    .items.filter((item: Attribute) => item === attr)[0]
-    .active = true;
+    .attributes.filter((attributeSet: AttributeSet) => attributeSet.cartStoreID === attrSetId)[0]
+    .items.forEach((item: Attribute) => {
+     if (item.active === true) item.active = false;
+     if (item === attr) item.active = true;
+    } );
   }
 
   removeZeroQuantityProducts(){
@@ -139,9 +144,9 @@ class CartStoreImpl {
   }
 
   get ProductCount() {
-      const temp = this.products.map((product) => product.quantity);
-      const res = temp.reduce((prev, curr) => prev + curr, 0);
-      return res;
+      return this.products
+      .map((product) => product.quantity)
+      .reduce((prev, curr) => prev + curr, 0);
   }
 
   get totalPrice(){
@@ -157,18 +162,8 @@ class CartStoreImpl {
   }
 
   get totalPriceWithTax(){
-    let result : number = 0;
-    for(let i = 0; i < this.products.length; i++){
-      let product = this.products[i];
-        let prices = product.prices;
-        let currentPrice = prices.filter(
-          (price: Price) => price.currency.symbol === HeaderStore.currency.symbol)[0];
-        result += currentPrice.amount * product.quantity;
-    }
-    result = result * 21 / 100;
-    return result;
+    return (Number(this.totalPrice) * 21 / 100).toFixed(2);
   }
-
 
 }
 

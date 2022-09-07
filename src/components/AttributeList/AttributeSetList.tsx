@@ -34,7 +34,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                                 (attr: Attribute) =>
                                 <TextButton 
                                     forCartStore={true}
-                                    attrSetID ={attrSet.id}
+                                    attrSetID ={attrSet.cartStoreID}
                                     productID = {this.props.productID}
                                     key={v4()}
                                     attribute={attr}
@@ -44,7 +44,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                                 (attr: Attribute) =>
                                     <SwatchButton 
                                         forCartStore={true}
-                                        attrSetID ={attrSet.id}
+                                        attrSetID ={attrSet.cartStoreID}
                                         productID = {this.props.productID}
                                         key={v4()}
                                         attribute={attr}
