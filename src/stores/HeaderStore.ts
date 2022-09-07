@@ -94,7 +94,7 @@ class HeaderStoreImpl {
         `
     })
       .then(response => this.setProducts(response.data.category.products))
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   }
 
 };

@@ -15,25 +15,27 @@
   position: absolute;
   top: 3.5vw;
   right: 1vw;
-  width: 4vw;
+  width: 5vw;
   max-height: 20vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 0.5vh;
+  overflow-x: hidden;
 
   &__btn {
     cursor: pointer;
     border: none;
     background-color: transparent;
-
-
+    height: 1.6vw;
     &:hover {
-      color: $mainGreen;
+      background-color: #EEEEEE;;
     }
 
     &__txt {
       font-family: 'Raleway', sans-serif;
+      letter-spacing: 0.5px;
+      font-size: 1.1em;
       font-weight: 600;
 
     }

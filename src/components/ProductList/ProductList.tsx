@@ -2,8 +2,6 @@ import { observer } from "mobx-react";
 import { Component, ReactNode } from "react";
 import styles from "./ProductList.module.scss";
 import HeaderStore from "../../stores/HeaderStore";
-import { gql } from "@apollo/client";
-import { apolloClient } from "../..";
 import ProductCard from "../ProductCard/ProductCard";
 import { v4 } from "uuid";
 

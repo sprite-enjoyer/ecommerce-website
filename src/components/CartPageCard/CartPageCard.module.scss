@@ -1,0 +1,132 @@
+.main{
+  position: relative;
+  left: 10%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh 0 1vh 0;
+  padding: 1vh 0 1vh 0;
+  width: 80%;
+  border-top: 1px solid rgb(235, 235, 235);
+
+    &__right {
+        display: flex;
+        justify-content: space-between;
+        &__counter {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+    
+          &__btn {
+            font-family: "Raleway";
+            font-size: 1.8em;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 0.11vw solid #1D1F22;
+            height: 1.3vw;
+            width: 1.3vw;
+            
+            cursor: pointer;
+            transition: all ease 0.2s;
+    
+            &:hover {
+              transform: translateY(0.2vh);
+            }
+    
+            &:active {
+              transform: translateY(-0.3vh);
+            }
+    
+          }
+    
+          &__num {
+            width: 8px;
+            height: 26px;
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 160%;
+          }
+        }
+          &__imgContainer {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+              &__arrowWrapper{
+
+                &__arrow{
+                  padding: 4px;
+                  position: absolute;
+                  bottom: 5%;
+                  background-color: black;
+                  width: 1vw;
+                  height: 0.8vw;
+                  opacity: 80%;
+
+                  &__right{
+                    padding: 4px;
+                    position: absolute;
+                    bottom: 5%;
+                    background-color: black;
+                    width: 1vw;
+                    height: 0.8vw;
+                    opacity: 80%;
+                    left: 98%;
+                    cursor: pointer;
+
+                  }
+
+                  &__left{
+                    padding: 4px;
+                    position: absolute;
+                    bottom: 5%;
+                    background-color: black;
+                    width: 1vw;
+                    height: 0.8vw;
+                    opacity: 80%;
+                    left: 96%;
+                    cursor: pointer;
+
+                  }
+                }
+              }
+              
+  
+              &__pic {
+                width: 10vw;
+              }
+          
+        }
+    
+      }
+
+      &__left{
+        display: flex;
+        flex-direction: column;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 500;
+        gap: 2vh;
+
+        &__nameBrandWrapper{
+            
+            font-size: 1.3em;
+            line-height: 160%;
+            display: flex;
+            flex-direction: column;
+
+            &__brand{
+              font-weight: 600;
+              font-size: 1.3em;
+            }
+        }
+        &__price{
+          font-size: 40em;
+        }
+      }
+    
+}
+

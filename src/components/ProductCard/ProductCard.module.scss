@@ -36,8 +36,13 @@
   width: 22vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 
+
+  &:hover{
+    box-shadow: 0px 4px 35px 5px rgba(168, 172, 176, 0.19);
+    cursor: pointer;
+  }
 
 
   &__imageContainer {
@@ -59,7 +64,7 @@
 
       &__txt {
         font-size: 1.5em;
-        font-weight: 500;
+        font-weight: 300;
         line-height: 160%;
         color: rgb(49, 49, 49);
       }

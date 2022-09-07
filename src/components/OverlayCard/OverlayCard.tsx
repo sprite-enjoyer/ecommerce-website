@@ -2,8 +2,8 @@ import { Component, ReactNode } from "react";
 import { AttributeSet, Price } from "../../global/types";
 import styles from "./OverlayCard.module.scss";
 import HeaderStore from "../../stores/HeaderStore";
-import { Attribute } from "../../global/types";
-import { v4 } from "uuid";
+import AttributeSetList from "../AttributeList/AttributeSetList";
+import CartStore from "../../stores/CartStore";
 
 export type OverlayCardProps = {
   id: string;
@@ -11,24 +11,24 @@ export type OverlayCardProps = {
   brand: string;
   prices: Array<Price>;
   picture: string;
-  attributes: Array<AttributeSet>
+  attributeArray: Array<AttributeSet>
+  quantitiy: number;
+  cartStoreID: number;
 }
 
-export default class OverlayCard extends Component<OverlayCardProps> {
+class OverlayCard extends Component<OverlayCardProps> {
   headerStore = HeaderStore;
-  state = {
-    count: 0
-  };
+  cartStore = CartStore;
   render(): ReactNode {
     return (
       <div className={styles["main"]} >
         <div className={styles["main__left"]} >
           <div className={styles["main__left__txt"]} >
-            <span>
+            <span className={styles["main__left__txt__brand"]} >
               {this.props.brand}
-              <br />
+            </span>
+            <span className={styles["main__left__text__name"]} >
               {this.props.name}
-              <br />
             </span>
             <span className={styles["main__left__txt__price"]} >
               {this.headerStore.currency.symbol +
@@ -38,52 +38,34 @@ export default class OverlayCard extends Component<OverlayCardProps> {
             </span>
           </div>
           <div className={styles["main__left__attributes"]} >
-            {
-              this.props.attributes.map((attribute: AttributeSet) =>
-                attribute.type === "text" ?
-                  <div
-                    key={v4()}
-                    className={styles["main__left__attributes__txtAttribute"]} >
-                    {attribute.items.map((item: Attribute) =>
-                      <div
-                        key={v4()}
-                        className={styles["main__left__attributes__txtAttribute__attrCell"]} >
-                        {item.value}
-                      </div>
-                    )
-                    }
-                  </div>
-                  :
-                  <div>
-                    {
-                      attribute.items.map((item: Attribute) =>
-                        <div
-                          key={v4()}
-                          className={styles["main__left__attributes__swatchAttribute__attrCell"]}
-                          style={{ backgroundColor: `${item.value}` }}>
-                          habado
-                        </div>
-                      )
-                    }
-                  </div>
-              )
-            }
+            <AttributeSetList 
+            productID = {this.props.id}
+            itemID={this.props.id}
+            attributeArray={this.props.attributeArray}/>
           </div>
 
         </div>
         <div className={styles["main__right"]} >
           <div className={styles["main__right__counter"]} >
             <button
-              onClick={() => this.setState({ count: this.state.count + 1 })}
+              onClick={() => this.cartStore.incrementQuantity(this.props.cartStoreID)}
               className={styles["main__right__counter__btn"]}
             >
               +
             </button>
             <span className={styles["main__right__counter__num"]}>
-              {this.state.count}
+              {
+              this.props.quantitiy
+              }
             </span>
             <button
-              onClick={() => this.state.count !== 0 ? this.setState({ count: this.state.count - 1 }) : null}
+              onClick={() => {
+                this.cartStore.decrementQuantity(this.props.cartStoreID)
+                this.props.quantitiy !== 0
+                && 
+                this.cartStore.removeZeroQuantityProducts() 
+              }
+              }
               className={styles["main__right__counter__btn"]}
             >
               -
@@ -93,10 +75,12 @@ export default class OverlayCard extends Component<OverlayCardProps> {
             <img
               className={styles["main__right__imgContainer__pic"]}
               src={this.props.picture}
-              alt="product picture" />
+              alt="product" />
           </div>
         </div>
       </div >
     );
   }
 }
+
+export default OverlayCard;

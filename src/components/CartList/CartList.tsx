@@ -3,8 +3,9 @@ import styles from "./CartList.module.scss";
 import CartStore from "../../stores/CartStore";
 import OverlayCard from "../OverlayCard/OverlayCard";
 import { v4 } from "uuid";
+import { observer } from "mobx-react";
 
-export default class CartList extends Component {
+class CartList extends Component {
   cartStore = CartStore;
   render(): ReactNode {
     return (
@@ -12,18 +13,22 @@ export default class CartList extends Component {
         {
           this.cartStore.products.map(product =>
             <OverlayCard
+              quantitiy={product.quantity}
               key={v4()}
               prices={product.prices}
-              attributes={product.attributes}
+              attributeArray={product.attributes}
               name={product.name}
               id={product.id}
               picture={product.gallery[0]}
               brand={product.brand}
+              cartStoreID={product.cartStoreID}
             />
-
           )
         }
       </div>
     );
   }
 }
+
+
+export default observer(CartList);

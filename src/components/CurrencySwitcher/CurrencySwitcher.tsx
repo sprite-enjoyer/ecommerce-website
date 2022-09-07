@@ -20,7 +20,10 @@ class CurrencySwitcher extends Component {
       <>
         <div className={styles["main"]} >
           <button
-            onClick={() => this.headerStore.setCurrencyCollapsed(!this.headerStore.currencySwitcherShown)}
+            onClick={() => {
+              this.headerStore.setCurrencyCollapsed(!this.headerStore.currencySwitcherShown);
+              this.headerStore.setCartShown(false);
+            }}
             className={styles["main__currencyBtn"]} >
             {this.headerStore.currency.symbol}
             <img src={require("../../assets/arrowDown.svg").default} alt="arrowDown" />

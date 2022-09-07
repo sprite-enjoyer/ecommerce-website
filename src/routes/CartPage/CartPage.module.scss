@@ -1,0 +1,31 @@
+.main{
+
+    &__cartText{
+        font-family: "Raleway", sans-serif;
+        margin: 7vh 0 5vh 10%;
+        font-size: 2em;
+    }
+
+    &__bottomText{
+        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+        font-size: 1.3em;
+        
+        &__btn{
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;
+            font-size: 0.7em;
+            width: 10vw;
+            height: 2vw;
+            color: white;
+            background-color: #5ECE7B;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+}
