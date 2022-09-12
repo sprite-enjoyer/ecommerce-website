@@ -3,7 +3,6 @@ import { action, computed, makeObservable, observable } from "mobx";
 import { apolloClient } from "..";
 import { Attribute, Price, cartStoreProduct, AttributeSet } from "../global/types";
 import HeaderStore from "./HeaderStore";
-
 class CartStoreImpl {
 
   products: Array<cartStoreProduct> = [];
@@ -96,8 +95,19 @@ class CartStoreImpl {
               cartStoreID: this.attrID
             }
           }
+          for (let i = 0; i < attributeSet.items.length; i++){
+            if (chosenAttrs === undefined){
+              if (i === 0) attributeSet.items[i] = {
+                ...attributeSet.items[i],
+                active: true
+              }
+              if (i !== 0) attributeSet.items[i] = {
+                ...attributeSet.items[i],
+                active: false
+              }
+            }
+          }
         }        
-
 
         const newProduct: cartStoreProduct = {
           name: product.name,

@@ -1,22 +1,24 @@
 .main{
+    margin-top: 6vh;
     width: 100%;
-    height: 90%;
+    height: 85%;
     position: absolute;
     display: flex;
-    align-items: center;
     -ms-overflow-style: none;
     scrollbar-width: none; 
 
     &__left{
         display: flex;
         width: 40vw;
-        margin-left: 7vw;
-        margin-right: 5vw;
+        margin-left: 10vw;
+        margin-right: 15vw;
+
         &__smallImgWrapper{
             display: flex;
             flex-direction: column;
             height: 30vw;
             overflow-y: auto;
+
             &__image{
                 margin: 0.5vw;
                 width: 5vw;
@@ -29,11 +31,10 @@
         }
 
         &__bigImgWrapper{
-            display: flex;
-            align-items: center;
-
+            height: 85vh;
             &__image{
-            width: 25vw;
+                max-height: 85vh;
+                width: 25vw;
             }
         }
     }
@@ -49,19 +50,21 @@
             gap: 1vh;
             display: flex;
             flex-direction: column;
+            margin-bottom: 3vh;
+
             &__brand{
-                font-size: 2em;
+                font-size: 2.7em;
                 font-weight: 600;
             }
     
             &__name{
-                font-size: 2em;
+                font-size: 2.7em;
             }
         }
 
         &__price{
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1.4em;
         }
 
         &__btn{
@@ -70,7 +73,7 @@
             border: none;
             font-size: 1em;
             font-family: "Raleway", sans-serif ;
-            width: 13vw;
+            width: 16vw;
             height: 6vh;
             cursor:pointer;
 

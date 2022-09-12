@@ -32,8 +32,8 @@ class ProductPageAttrList extends React.Component{
                                     productID = {(-1).toString()}
                                     key={v4()}
                                     attribute={attr}
-                                    minHeight="2.5vw"
-                                    minWidth="3vw"
+                                    minHeight="3vw"
+                                    minWidth="3.5vw"
                                     />)
                             :
                             attrSet.items.map(
@@ -44,8 +44,8 @@ class ProductPageAttrList extends React.Component{
                                         productID = {(-1).toString()}
                                         key={v4()}
                                         attribute={attr}
-                                        minHeight="1.5vw"
-                                        minWidth="1.5vw"
+                                        minHeight="2vw"
+                                        minWidth="2vw"
                                         />)
                             }
                         </div>
