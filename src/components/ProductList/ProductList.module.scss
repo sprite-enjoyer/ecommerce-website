@@ -15,9 +15,8 @@
   }
 
   &__productList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     margin-top: 18vh;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
   }
 }
