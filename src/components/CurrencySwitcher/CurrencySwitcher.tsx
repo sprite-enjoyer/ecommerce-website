@@ -33,7 +33,10 @@ class CurrencySwitcher extends Component {
           <div className={styles["conditional"]} >
             {this.headerStore.currencies.map(currency =>
               <button
-                onClick={() => this.headerStore.setCurrency({ label: currency.label, symbol: currency.symbol })}
+                onClick={() => {
+                  this.headerStore.setCurrencyCollapsed(false);
+                  this.headerStore.setCurrency({ label: currency.label, symbol: currency.symbol })
+                }}
                 className={styles["conditional__btn"]}
                 key={v4()} >
                 <span
