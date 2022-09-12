@@ -49,8 +49,12 @@ class CartStoreImpl {
 
   addProduct(id: string, chosenAttrs?: Array<AttributeSet>) {
     if (this.productExists(id)) {
-       this.products.filter((product: cartStoreProduct) => product.id === id)[0].quantity++;
-       return;
+      let product = this.products.filter((product: cartStoreProduct) => product.id === id)[0];
+      product.quantity++;
+      if (chosenAttrs !== undefined){
+        product.attributes = chosenAttrs;
+      }
+      return;
     }
     const quote = "\"";
     apolloClient.query({
@@ -84,7 +88,7 @@ class CartStoreImpl {
       .then(response => {
         const product = response.data.product;
         const temp = [...this.products];
-        
+
         for(let attributeSet of product.attributes){
           if (chosenAttrs === undefined){
             attributeSet = {
@@ -92,13 +96,8 @@ class CartStoreImpl {
               cartStoreID: this.attrID
             }
           }
-          for(let item of attributeSet.items){
-           item= {
-            ...item,
-            active: false
-           };
-          }
         }        
+
 
         const newProduct: cartStoreProduct = {
           name: product.name,
