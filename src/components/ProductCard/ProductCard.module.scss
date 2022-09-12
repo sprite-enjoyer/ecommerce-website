@@ -36,28 +36,29 @@
   width: 22vw;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-
+  justify-content: center;
 
   &:hover{
     box-shadow: 0px 4px 35px 5px rgba(168, 172, 176, 0.19);
     cursor: pointer;
   }
 
-
   &__imageContainer {
     cursor: pointer;
     display: flex;
+    align-items: center;
     justify-content: center;
     position: relative;
 
     &__image {
-      width: 20vw;
+      max-height: 350px;
+      max-width: 350px;
     }
 
     &__outOfStock {
       display: flex;
       justify-content: center;
+      align-items: center;
       position: absolute;
       align-self: center;
       width: 20vw;
