@@ -10,18 +10,21 @@
         gap: 0.6vh;
         padding-left: 5px;
         margin: 0.5vh 0vw 0.5vh 0vw;
-        font-family: "Raleway",sans-serif;
-        font-weight: 800;
-        font-size: 1.3em;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 20px;
+        line-height: 85%;
+        margin: 1vh 0 1vh 0;
         
+
         &__attrID{
             width: 8vw;
-            
         }
 
         &__attrSet{
             display: flex;
-            
+            margin: 1vh 0 1vh 0;
         }
     }
 }

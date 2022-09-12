@@ -53,9 +53,12 @@ class ProductPage extends Component{
                         </span>
                     </div>
                     <ProductPageAttrList />
-                    <span className={styles["main__right__price"]}>
-                        PRICE:
+                    <div className={styles["main__right__price"]}>
+                        <span className={styles["main__right__price__txt"]}>
+                            PRICE:
+                        </span>
                         <br />
+                        <span className={styles["main__right__price__value"]} >
                         {
                             this.ppStore.currentProduct?.prices.filter(
                                 (price: Price) => 
@@ -64,7 +67,8 @@ class ProductPage extends Component{
                                  +
                             this.headerStore.currency.symbol
                         }
-                    </span>
+                        </span>
+                    </div>
                     { this.ppStore.currentProduct?.inStock &&
                     <button
                         className={styles["main__right__btn"]}
