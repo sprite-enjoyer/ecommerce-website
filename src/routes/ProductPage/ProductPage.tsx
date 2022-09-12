@@ -14,10 +14,12 @@ class ProductPage extends Component{
     ppStore = ProductPageStore;
     cartStore = CartStore;
     headerStore = HeaderStore;
+
     componentDidMount(): void {
     const productID = window.location.href.split("/")[4];
     this.ppStore.fetchProduct(productID);
     }
+
     render(): ReactNode {
         return (
         <>
@@ -69,20 +71,19 @@ class ProductPage extends Component{
                         }
                         </span>
                     </div>
-                    { this.ppStore.currentProduct?.inStock &&
                     <button
                         className={styles["main__right__btn"]}
                         onClick={() => {
                             if (this.ppStore.currentProduct === undefined) return;
+                            if(this.ppStore.currentProduct.inStock === false) return;
                             this.cartStore.addProduct(
                                 this.ppStore.currentProduct.id, 
-                                this.ppStore.currentProduct?.attributes
-                                )
+                                this.ppStore.currentProduct?.attributes);
                             this.ppStore.fetchProduct(window.location.href.split("/")[4]);
-                            }}>
+                            }}
+                    >
                         ADD TO CART
                     </button>
-                    }
                     <span className={styles["main__right__desc"]} >
                         <Interweave content={this.ppStore.currentProduct?.description}/>
                     </span>

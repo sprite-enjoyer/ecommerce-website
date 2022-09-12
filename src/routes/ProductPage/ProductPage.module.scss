@@ -82,15 +82,15 @@
         }
 
         &__btn{
-            background-color: #5ECE7B ;
+            background-color: #5ECE7B;
             color: white;
             border: none;
             font-size: 1em;
             font-family: "Raleway", sans-serif ;
             width: 16vw;
             height: 6vh;
-            cursor:pointer;
-
+            cursor: pointer;
+            
             &:hover {
                 transform: translateY(0.2vh);
               }
