@@ -4,7 +4,7 @@ import { apolloClient } from "..";
 import { Category, Currency } from "../global/types";
 
 class HeaderStoreImpl {
-  category: string = Category.all;
+  category: string = "all";
   currency: Currency = {
     label: "USD",
     symbol: "$"
@@ -33,7 +33,7 @@ class HeaderStoreImpl {
     });
   }
 
-  setCategory(category: Category) {
+  setCategory(category: string) {
     this.category = category;
     this.fetchProducts();
   }
