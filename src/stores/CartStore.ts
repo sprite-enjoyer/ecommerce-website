@@ -3,6 +3,7 @@ import { action, computed, makeObservable, observable } from "mobx";
 import { apolloClient } from "..";
 import { Attribute, Price, cartStoreProduct, AttributeSet } from "../global/types";
 import HeaderStore from "./HeaderStore";
+import { cloneDeep } from "@apollo/client/utilities";
 class CartStoreImpl {
 
   products: Array<cartStoreProduct> = [];
@@ -85,15 +86,18 @@ class CartStoreImpl {
       `
     })
       .then(response => {
-        const product = response.data.product;
+        let product = response.data.product;
+        product = cloneDeep(product);
         const temp = [...this.products];
 
         for(let attributeSet of product.attributes){
           if (chosenAttrs === undefined){
+            console.log(attributeSet, "before");
             attributeSet = {
               ...attributeSet,
               cartStoreID: this.attrID
             }
+            console.log(attributeSet, "after");
           }
           for (let i = 0; i < attributeSet.items.length; i++){
             if (chosenAttrs === undefined){
