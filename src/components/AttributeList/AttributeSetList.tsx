@@ -24,7 +24,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                     key={v4()}
                     className={styles["main__attrSetBox"]} >
                         <span className={styles["main__attrSetbox__attrID"]} >
-                            {attrSet.id}
+                            {attrSet.id}:
                         </span>
                         <div className={styles["main__attrSetBox__attrSet"]} >
                             {
@@ -36,6 +36,8 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                                     forCartStore={true}
                                     attrSetID ={attrSet.id}
                                     productID = {this.props.productID}
+                                    height="30px"
+                                    minWidth="30px"
                                     key={v4()}
                                     attribute={attr}
                                     />)
@@ -43,6 +45,8 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                             attrSet.items.map(
                                 (attr: Attribute) =>
                                     <SwatchButton 
+                                        height="20px"
+                                        width="20px"
                                         forCartStore={true}
                                         attrSetID ={attrSet.id}
                                         productID = {this.props.productID}

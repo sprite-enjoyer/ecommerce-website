@@ -18,12 +18,14 @@
       font-style: normal;
       font-weight: 400;
       font-size: 1em;
+
       &__price {
-        font-weight: 600;
+        font-size: 1.1em;
+        font-weight: 500;
       }
 
       &__price{
-        margin-bottom: 0.5vh;
+        margin-bottom: 1vh;
       }
     }
 
@@ -62,7 +64,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 0.11vw solid #1D1F22;
+        border: 1px solid #1D1F22;
         height: 1.3vw;
         width: 1.3vw;
         

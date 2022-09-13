@@ -32,7 +32,6 @@ class OverlayCard extends Component<OverlayCardProps> {
             </span>
             <span className={styles["main__left__txt__price"]} >
               {this.headerStore.currency.symbol +
-                " " +
                 this.props.prices.filter(
                   price => price.currency.symbol === this.headerStore.currency.symbol)[0].amount}
             </span>
