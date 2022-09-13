@@ -92,12 +92,10 @@ class CartStoreImpl {
 
         for(let attributeSet of product.attributes){
           if (chosenAttrs === undefined){
-            console.log(attributeSet, "before");
             attributeSet = {
               ...attributeSet,
               cartStoreID: this.attrID
-            }
-            console.log(attributeSet, "after");
+            };
           }
           for (let i = 0; i < attributeSet.items.length; i++){
             if (chosenAttrs === undefined){
@@ -134,9 +132,10 @@ class CartStoreImpl {
     this.setProducts(this.products.filter(product => product.cartStoreID !== cartStoreID));
   }
 
-  setActiveAttributeWithId(productId: string, attrSetId: number, attr: Attribute){
+  setActiveAttributeWithId(productId: string, attrSetId: string, attr: Attribute){
+
     this.products.filter(product => product.id === productId)[0]
-    .attributes.filter((attributeSet: AttributeSet) => attributeSet.cartStoreID === attrSetId)[0]
+    .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
     .items.forEach((item: Attribute) => {
      if (item.active === true) item.active = false;
      if (item === attr) item.active = true;

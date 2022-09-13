@@ -33,10 +33,10 @@ class ProductPageSoreImpl{
         setTimeout(() => {this.redirectToHome = false}, 100);
     }
 
-    setActiveAttribute(attrSetId: number, attr: Attribute){
+    setActiveAttribute(attrSetId: string, attr: Attribute){
       if (this.currentProduct === undefined) return;
       this.currentProduct
-        .attributes.filter((attributeSet: AttributeSet) => attributeSet.cartStoreID === attrSetId)[0]
+        .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
         .items.forEach(item => item.active = item === attr ? true : false);
     }
 

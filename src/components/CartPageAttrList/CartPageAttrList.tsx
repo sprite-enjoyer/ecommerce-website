@@ -31,7 +31,7 @@ class CartPageAttrList extends Component<CartPageAttrListProps>{
                                 (attr: Attribute) =>
                                 <TextButton 
                                     forCartStore={true}
-                                    attrSetID ={attrSet.cartStoreID}
+                                    attrSetID ={attrSet.id}
                                     productID = {this.props.product.id}
                                     key={v4()}
                                     attribute={attr}
@@ -43,7 +43,7 @@ class CartPageAttrList extends Component<CartPageAttrListProps>{
                                 (attr: Attribute) =>
                                     <SwatchButton 
                                         forCartStore={true}
-                                        attrSetID ={attrSet.cartStoreID}
+                                        attrSetID ={attrSet.id}
                                         productID = {this.props.product.id}
                                         key={v4()}
                                         attribute={attr}

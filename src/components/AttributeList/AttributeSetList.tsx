@@ -5,16 +5,16 @@ import { v4 } from "uuid";
 import CartStore from "../../stores/CartStore";
 import TextButton from "../AttributeButtons/TextButton";
 import SwatchButton from "../AttributeButtons/SwatchButton";
+import { toJS } from "mobx";
 
 export type AttributeListProps = {
     attributeArray: Array<AttributeSet>;
-    itemID: string;
     productID: string;
 };
 
 export default class AttributeSetList extends Component<AttributeListProps>{
     cartStore = CartStore;
-    render(): ReactNode {    
+    render(): ReactNode { 
         return (
             <div className={styles["main"]} >
                 {
@@ -34,7 +34,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                                 (attr: Attribute) =>
                                 <TextButton 
                                     forCartStore={true}
-                                    attrSetID ={attrSet.cartStoreID}
+                                    attrSetID ={attrSet.id}
                                     productID = {this.props.productID}
                                     key={v4()}
                                     attribute={attr}
@@ -44,7 +44,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                                 (attr: Attribute) =>
                                     <SwatchButton 
                                         forCartStore={true}
-                                        attrSetID ={attrSet.cartStoreID}
+                                        attrSetID ={attrSet.id}
                                         productID = {this.props.productID}
                                         key={v4()}
                                         attribute={attr}

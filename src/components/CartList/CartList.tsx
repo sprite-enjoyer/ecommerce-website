@@ -4,6 +4,7 @@ import CartStore from "../../stores/CartStore";
 import OverlayCard from "../OverlayCard/OverlayCard";
 import { v4 } from "uuid";
 import { observer } from "mobx-react";
+import { toJS } from "mobx";
 
 class CartList extends Component {
   cartStore = CartStore;
