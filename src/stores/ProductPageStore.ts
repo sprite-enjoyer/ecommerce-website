@@ -13,6 +13,7 @@ class ProductPageSoreImpl{
             redirectToHome: observable,
             currentPhoto: observable,
             setCurrentPhoto: action,
+            everyAttributeIsSelected: action,
             setRedirectToHome: action,
             fetchProduct: action,
             setProduct: action,
@@ -38,6 +39,18 @@ class ProductPageSoreImpl{
       this.currentProduct
         .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
         .items.forEach(item => item.active = item === attr ? true : false);
+    }
+
+    everyAttributeIsSelected(){
+      if (this.currentProduct === undefined) return;
+      const attributeCount = this.currentProduct.attributes.length;
+      let temp: boolean[] = [];
+      this.currentProduct.attributes.forEach((attrSet: AttributeSet) => {
+        attrSet.items.forEach((item: Attribute) => {
+          if(item.active === true) temp.push(true);
+        });
+      });
+      return attributeCount === temp.length;
     }
 
     fetchProduct(id: string){

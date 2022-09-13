@@ -75,7 +75,8 @@ class ProductPage extends Component{
                         className={styles["main__right__btn"]}
                         onClick={() => {
                             if (this.ppStore.currentProduct === undefined) return;
-                            if(this.ppStore.currentProduct.inStock === false) return;
+                            if(!this.ppStore.currentProduct.inStock) return;
+                            if(!this.ppStore.everyAttributeIsSelected()) return;
                             this.cartStore.addProduct(
                                 this.ppStore.currentProduct.id, 
                                 this.ppStore.currentProduct?.attributes);
