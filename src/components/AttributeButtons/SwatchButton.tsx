@@ -10,6 +10,7 @@ export type SwatchButtonProps = {
     forCartStore: boolean;
     productID: string;
     attrSetID: string;
+    cartStoreID?: number;
     height?: string;
     width?: string;
     minHeight?: string;
@@ -29,9 +30,9 @@ export default class SwatchButton extends Component<SwatchButtonProps>{
     }
 
     forCartStore(){
-        (this.props.productID !== undefined) && 
+        (this.props.cartStoreID !== undefined) && 
             this.cartStore.setActiveAttributeWithId
-                (this.props.productID, this.props.attrSetID,  this.props.attribute)
+                (this.props.cartStoreID, this.props.attrSetID,  this.props.attribute)
     }
 
     forProductPageStore(){

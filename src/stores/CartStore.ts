@@ -48,14 +48,6 @@ class CartStoreImpl {
   }
 
   addProduct(id: string, chosenAttrs?: Array<AttributeSet>) {
-    if (this.productExists(id)) {
-      let product = this.products.filter((product: cartStoreProduct) => product.id === id)[0];
-      product.quantity++;
-      if (chosenAttrs !== undefined){
-        product.attributes = chosenAttrs;
-      }
-      return;
-    }
     const quote = "\"";
     apolloClient.query({
       query: gql`
@@ -132,9 +124,9 @@ class CartStoreImpl {
     this.setProducts(this.products.filter(product => product.cartStoreID !== cartStoreID));
   }
 
-  setActiveAttributeWithId(productId: string, attrSetId: string, attr: Attribute){
+  setActiveAttributeWithId(productId: number, attrSetId: string, attr: Attribute){
 
-    this.products.filter(product => product.id === productId)[0]
+    this.products.filter(product => product.cartStoreID === productId)[0]
     .attributes.filter((attributeSet: AttributeSet) => attributeSet.id === attrSetId)[0]
     .items.forEach((item: Attribute) => {
      if (item.active === true) item.active = false;

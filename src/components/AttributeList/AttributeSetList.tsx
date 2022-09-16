@@ -5,11 +5,11 @@ import { v4 } from "uuid";
 import CartStore from "../../stores/CartStore";
 import TextButton from "../AttributeButtons/TextButton";
 import SwatchButton from "../AttributeButtons/SwatchButton";
-import { toJS } from "mobx";
 
 export type AttributeListProps = {
     attributeArray: Array<AttributeSet>;
     productID: string;
+    cartStoreID: number;
 };
 
 export default class AttributeSetList extends Component<AttributeListProps>{
@@ -33,6 +33,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                             attrSet.items.map(
                                 (attr: Attribute) =>
                                 <TextButton 
+                                    cartStoreID={this.props.cartStoreID}
                                     forCartStore={true}
                                     attrSetID ={attrSet.id}
                                     productID = {this.props.productID}
@@ -45,6 +46,7 @@ export default class AttributeSetList extends Component<AttributeListProps>{
                             attrSet.items.map(
                                 (attr: Attribute) =>
                                     <SwatchButton 
+                                        cartStoreID={this.props.cartStoreID}
                                         height="20px"
                                         width="20px"
                                         forCartStore={true}

@@ -38,6 +38,7 @@ class OverlayCard extends Component<OverlayCardProps> {
           </div>
           <div className={styles["main__left__attributes"]} >
             <AttributeSetList 
+            cartStoreID={this.props.cartStoreID}
             productID = {this.props.id}
             attributeArray={this.props.attributeArray}/>
           </div>

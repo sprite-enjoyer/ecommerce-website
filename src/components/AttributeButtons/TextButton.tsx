@@ -9,6 +9,7 @@ import ProductPageStore from "../../stores/ProductPageStore";
 export type TextButtonProps = {
     attribute: Attribute;
     forCartStore: boolean;
+    cartStoreID?: number;
     productID?: string;
     attrSetID: string;
     height?: string;
@@ -17,6 +18,7 @@ export type TextButtonProps = {
     minWidth?:string;
     maxHeight?: string;
     maxWidth?:string;
+
 };
 
 export default class TextButton extends Component<TextButtonProps>{
@@ -30,9 +32,9 @@ export default class TextButton extends Component<TextButtonProps>{
     }
 
     forCartStore(){
-        (this.props.productID !== undefined) && 
+        (this.props.cartStoreID !== undefined) && 
             this.cartStore.setActiveAttributeWithId
-                (this.props.productID, this.props.attrSetID,  this.props.attribute)
+                (this.props.cartStoreID, this.props.attrSetID,  this.props.attribute)
     }
 
     forProductPageStore(){
